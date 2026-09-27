@@ -34,7 +34,7 @@ impl Plugin for AppPlugin {
                 })
                 .set(WindowPlugin {
                     primary_window: Window {
-                        title: "Bevy New 2D".to_string(),
+                        title: "Tiley".to_string(),
                         fit_canvas_to_parent: true,
                         ..default()
                     }
@@ -71,7 +71,7 @@ impl Plugin for AppPlugin {
         app.configure_sets(Update, PausableSystems.run_if(in_state(Pause(false))));
 
         // Spawn the main camera.
-        app.add_systems(Startup, spawn_camera);
+        app.add_systems(Startup, spawn_camera.spawn());
     }
 }
 
@@ -96,6 +96,9 @@ struct Pause(pub bool);
 #[derive(SystemSet, Copy, Clone, Eq, PartialEq, Hash, Debug)]
 struct PausableSystems;
 
-fn spawn_camera(mut commands: Commands) {
-    commands.spawn((Name::new("Camera"), Camera2d));
+fn spawn_camera() -> impl Scene {
+    bsn! {
+        #Camera
+        Camera2d
+    }
 }
