@@ -89,11 +89,7 @@ where
 }
 
 /// A simple button with text and an action defined as an [`Observer`]. The button's layout is provided by `button_bundle`.
-fn button_base<E, M, I>(
-    text: impl Into<String>,
-    action: I,
-    button_bundle: impl Scene,
-) -> impl Scene
+fn button_base<E, M, I>(text: impl Into<String>, action: I, button_bundle: impl Scene) -> impl Scene
 where
     E: EventPattern<Event: EntityEvent>,
     I: IntoObserverSystem<E, M, ()> + Clone + Sync,

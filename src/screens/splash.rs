@@ -1,6 +1,10 @@
 //! A splash screen that plays briefly at startup.
 
-use bevy::{image::{ImageLoaderSettings, ImageSampler}, input::common_conditions::input_just_pressed, prelude::*};
+use bevy::{
+    image::{ImageLoaderSettings, ImageSampler},
+    input::common_conditions::input_just_pressed,
+    prelude::*,
+};
 
 use crate::{AppSystems, screens::Screen, theme::prelude::*};
 
@@ -55,7 +59,7 @@ fn spawn_splash_screen(mut commands: Commands, asset_server: Res<AssetServer>) {
                 settings.sampler = ImageSampler::linear();
             },
         )
-        .load("images/splash.png",);
+        .load("images/splash.png");
 
     commands.spawn_scene(bsn! {
         @widget::ui_root("Splash Screen")
