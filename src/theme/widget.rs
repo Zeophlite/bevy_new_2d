@@ -29,7 +29,7 @@ pub fn ui_root(name: impl Into<Cow<'static, str>>) -> impl Scene {
 pub fn header(text: impl Into<String>) -> impl Scene {
     bsn! {
         #Header
-        Text({ text.into() })
+        Text(text)
         TextFont { font_size: px(40.0) }
         TextColor(HEADER_TEXT)
     }
@@ -39,7 +39,7 @@ pub fn header(text: impl Into<String>) -> impl Scene {
 pub fn label(text: impl Into<String>) -> impl Scene {
     bsn! {
         #Label
-        Text({ text.into() })
+        Text(text)
         TextFont { font_size: px(24.0) }
         TextColor(LABEL_TEXT)
     }
