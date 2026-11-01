@@ -20,7 +20,7 @@ fn spawn_main_menu() -> impl Scene {
             --
             @widget::button("Credits", open_credits_menu)
             --
-            { #[cfg(not(target_family = "wasm"))] (true).then(|| { bsn! { @widget::button("Exit", exit_app) }})}
+            { #[cfg(not(target_family = "wasm"))] bsn! { @widget::button("Exit", exit_app) } }
         ]
     }
 }
